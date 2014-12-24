@@ -1,7 +1,5 @@
 package ngsi
 
-import "encoding/json"
-
 type NotifyConditionType int
 type UpdateActionType int
 
@@ -112,9 +110,9 @@ type SubscribeError struct {
 // </xs:complexType>
 
 type NotifyCondition struct {
-	Type          NotifyConditionType `json:"name"`
-	CondValueList []ValueList         `json:"condValueList,omitempty"`
-	Restriction   string              `json:"restriction,omitempty"`
+	Type NotifyConditionType `json:"name"`
+	// CondValues  []ValueList         `json:"condValues,omitempty"`
+	Restriction string `json:"restriction,omitempty"`
 }
 
 // <xs:complexType name="OperationScope">
@@ -124,10 +122,9 @@ type NotifyCondition struct {
 // </xs:sequence>
 // </xs:complexType>
 
-type NotifyCondition struct {
-	Type          NotifyConditionType `json:"name"`
-	CondValueList []ValueList         `json:"condValueList,omitempty"`
-	Restriction   string              `json:"restriction,omitempty"`
+type OperationScope struct {
+	Type  string `json:"type"`
+	Value string `json:"value"`
 }
 
 // <xs:complexType name="Restriction">
@@ -182,10 +179,10 @@ type ContextRegistrationAttribute struct {
 // </xs:complexType>
 
 type ContextRegistration struct {
-	EntityIdList                     []EntityId                         `json:"EntityIdList,omitempty"`
-	ContextRegistrationAttributeList []ContextRegistrationAttributeList `json:"ContextRegistrationAttributeList,omitempty"`
-	Metadatas                        []ContextMetadata                  `json:"metadatas,omitempty"`
-	ProvidingApplication             string                             `json:"ProvidingApplication"`
+	EntityIdList                  []EntityId                     `json:"EntityIdList,omitempty"`
+	ContextRegistrationAttributes []ContextRegistrationAttribute `json:"ContextRegistrationAttributes,omitempty"`
+	Metadatas                     []ContextMetadata              `json:"metadatas,omitempty"`
+	ProvidingApplication          string                         `json:"ProvidingApplication"`
 }
 
 // <xs:complexType name="ContextElementResponse">

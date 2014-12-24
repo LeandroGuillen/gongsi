@@ -1,7 +1,5 @@
 package ngsi
 
-import "encoding/json"
-
 // <xs:complexType name="RegisterContextRequest">
 // <xs:sequence>
 // <xs:element name="contextRegistrationList" type="ContextRegistrationList" minOccurs="0" maxOccurs="1"/>
