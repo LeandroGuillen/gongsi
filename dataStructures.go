@@ -69,7 +69,9 @@ type EntityId struct {
 // </xs:complexType>
 
 type ContextElement struct {
-	EntityId            EntityId           `json:"entityId"`
+	Id                  string             `json:"id"`
+	Type                string             `json:"type,omitempty"`
+	IsPattern           bool               `json:"isPattern"`
 	AttributeDomainName string             `json:"attributeDomainName,omitempty"`
 	Attributes          []ContextAttribute `json:"attributes,omitempty"`
 	Metadatas           []ContextMetadata  `json:"metadatas,omitempty"`
@@ -135,8 +137,8 @@ type OperationScope struct {
 // </xs:complexType>
 
 type Restriction struct {
-	AttributeExpresion string           `json:"attributeExpresion"`
-	Scope              []OperationScope `json:"scope,omitempty"`
+	AttributeExpression string           `json:"attributeExpression"`
+	Scope               []OperationScope `json:"scope,omitempty"`
 }
 
 // <xs:complexType name="SubscribeResponse">

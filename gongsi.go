@@ -1,7 +1,7 @@
 package ngsi
 
 import (
-	"io/ioutil"
+	"github.com/franela/goreq"
 	"net/http"
 	"strconv"
 )
@@ -30,26 +30,32 @@ func (g *Gongsi) SetSSL(useSSL bool) {
 	}
 }
 
-func (g *Gongsi) get(resource string) ([]byte, error) {
-	req, err := http.NewRequest("GET", g.baseUrl+resource, nil)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Accept", "application/json")
-
-	resp, err := g.client.Do(req)
+func (g *Gongsi) get(resource string) (*goreq.Response, error) {
+	res, err := goreq.Request{
+		Method: "GET",
+		Uri:    g.baseUrl + resource,
+		Accept: "application/json",
+	}.Do()
 
 	if err != nil {
 		return nil, err
 	}
 
-	defer resp.Body.Close()
+	return res, nil
+}
 
-	body, err := ioutil.ReadAll(resp.Body)
+func (g *Gongsi) post(resource string, payload interface{}) (*goreq.Response, error) {
+	res, err := goreq.Request{
+		Method:      "POST",
+		Uri:         g.baseUrl + resource,
+		Accept:      "application/json",
+		ContentType: "application/json",
+		Body:        payload,
+	}.Do()
+
 	if err != nil {
 		return nil, err
 	}
 
-	return body, nil
+	return res, nil
 }
