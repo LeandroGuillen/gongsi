@@ -30,8 +30,8 @@ func main() {
 
 	app.Commands = []cli.Command{
 		{
-			Name:      "get",
-			ShortName: "g",
+			Name:      "query",
+			ShortName: "q",
 			Usage:     "Query operation",
 			Action: func(c *cli.Context) {
 				if str := c.Args().First(); str != "" {
