@@ -1,4 +1,4 @@
-package ngsi
+package gongsi
 
 type NotifyConditionType int
 type UpdateActionType int

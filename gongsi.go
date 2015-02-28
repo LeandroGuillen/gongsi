@@ -1,4 +1,4 @@
-package ngsi
+package gongsi
 
 import (
 	"github.com/franela/goreq"
@@ -7,10 +7,10 @@ import (
 )
 
 type Gongsi struct {
-	Transport string
 	Host      string
 	Port      int
 	Encoding  string
+	transport string
 	client    *http.Client
 	baseUrl   string
 }
@@ -19,14 +19,14 @@ func (g *Gongsi) Init() {
 	g.Encoding = "application/json"
 	g.SetSSL(false)
 	g.client = &http.Client{}
-	g.baseUrl = g.Transport + "://" + g.Host + ":" + strconv.Itoa(g.Port)
+	g.baseUrl = g.transport + "://" + g.Host + ":" + strconv.Itoa(g.Port)
 }
 
 func (g *Gongsi) SetSSL(useSSL bool) {
 	if useSSL {
-		g.Transport = "https"
+		g.transport = "https"
 	} else {
-		g.Transport = "http"
+		g.transport = "http"
 	}
 }
 

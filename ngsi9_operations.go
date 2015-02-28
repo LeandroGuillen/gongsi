@@ -1,4 +1,4 @@
-package ngsi
+package gongsi
 
 // <xs:complexType name="RegisterContextRequest">
 // <xs:sequence>
