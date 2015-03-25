@@ -48,8 +48,8 @@ func (g *Gongsi) post(resource string, payload interface{}) (*goreq.Response, er
 	res, err := goreq.Request{
 		Method:      "POST",
 		Uri:         g.baseUrl + resource,
-		Accept:      "application/json",
-		ContentType: "application/json",
+		Accept:      g.Encoding,
+		ContentType: g.Encoding,
 		Body:        payload,
 	}.Do()
 
