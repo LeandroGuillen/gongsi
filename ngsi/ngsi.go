@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bitbucket.org/leandroguillen/gongsi"
+	"github.com/leandroguillen/gongsi"
 	"github.com/codegangsta/cli"
 	"os"
 )
