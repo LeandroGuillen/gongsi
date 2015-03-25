@@ -24,9 +24,9 @@ func main() {
 	app.Email = "leandro.guillen@imdea.org"
 
 	// Default operation with no parameters
-	// app.Action = func(c *cli.Context) {
-	// 	println("I ngsi U")
-	// }
+	app.Action = func(c *cli.Context) {
+		println("USAGE: ngsi [global options] command [command options] [arguments...]")
+	}
 
 	app.Commands = []cli.Command{
 		{
