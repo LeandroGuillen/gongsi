@@ -38,9 +38,6 @@ func (g *Gongsi) QueryContext(elem ContextElement) (string, error) {
 
 	qcr := &QueryContextRequest{
 		Entities: []ContextElement{elem},
-		// Attributes: []string{
-		// 	"temperature",
-		// },
 	}
 
 	res, err := g.post("/v1/queryContext", qcr)
@@ -56,16 +53,3 @@ func (g *Gongsi) QueryContext(elem ContextElement) (string, error) {
 	return out, nil
 }
 
-func (g *Gongsi) ConvQueryContext(eid string) (string, error) {
-	res, err := g.get("/v1/contextEntities/" + eid)
-	if err != nil {
-		return "", err
-	}
-
-	out, err := res.Body.ToString()
-	if err != nil {
-		return "", err
-	}
-
-	return out, nil
-}

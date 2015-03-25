@@ -26,6 +26,7 @@ func main() {
 	// Default operation with no parameters
 	app.Action = func(c *cli.Context) {
 		println("USAGE: ngsi [global options] command [command options] [arguments...]")
+		println("Type 'ngsi help' for help")
 	}
 
 	app.Commands = []cli.Command{
@@ -34,14 +35,22 @@ func main() {
 			ShortName: "q",
 			Usage:     "Query operation",
 			Action: func(c *cli.Context) {
-				if str := c.Args().First(); str != "" {
-					// println("Query an entity by ID: ", str)
-					out, _ := g.ConvQueryContext(str)
+				
+				arg1 := c.Args().Get(0)
+				arg2 := c.Args().Get(1)
+
+				if arg1 != "" && arg2 != "" {
+					// Query for an attribute
+					out, _ := g.ConvQueryContextAttribute(arg1, arg2)
+					println(out)
+				} else if arg1 != "" {
+					// Query for an entity
+					out, _ := g.ConvQueryContext(arg1)
 					println(out)
 				} else {
 					println("You must provide an ID:")
 					println("   ngsi get <ID>")
-				}
+				}							
 			},
 		},
 		{
@@ -49,7 +58,7 @@ func main() {
 			ShortName: "u",
 			Usage:     "Update operation",
 			Action: func(c *cli.Context) {
-				println("UPDATE operation", c.Args().First())
+
 			},
 		},
 		{
