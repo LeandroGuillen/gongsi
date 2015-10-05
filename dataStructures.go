@@ -86,8 +86,8 @@ type ContextElement struct {
 // </xs:complexType>
 
 type StatusCode struct {
-	Code         int    `json:"name"`
-	ReasonPhrase string `json:"type,omitempty"`
+	Code         int    `json:"code"`
+	ReasonPhrase string `json:"reasonPhrase,omitempty"`
 	Details      string `json:"details,omitempty"`
 }
 
@@ -112,7 +112,7 @@ type SubscribeError struct {
 // </xs:complexType>
 
 type NotifyCondition struct {
-	Type NotifyConditionType `json:"name"`
+	Type NotifyConditionType `json:"type"`
 	// CondValues  []ValueList         `json:"condValues,omitempty"`
 	Restriction string `json:"restriction,omitempty"`
 }
